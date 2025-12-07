@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracking Pesanan – HunianKita</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/utilities.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+            <h2>Tracking Pesanan</h2>
+            <p>Cek status pemesanan rumah Anda</p>
+        </div>
+    </header>
+
+    <!-- CONTENT -->
+    <section class="section">
+        <div class="container">
+
+            <form id="trackingForm" class="card shadow p-4">
+                <h3 class="mb-3">Masukkan Kode Pesanan</h3>
+
+                <label>Kode Pesanan</label>
+                <input type="text" name="kode" placeholder="Contoh: HK-2025-00123" required>
+
+                <button type="submit" class="btn-primary mt-3">Cek Status</button>
+                <button id="waBtn" type="button" class="btn-success mt-2" style="display:none;">
+                    Tracking via WhatsApp
+                </button>
+            </form>
+
+            <div id="result" class="card shadow mt-4 p-4" style="display:none;">
+                <h3>Status Pesanan</h3>
+                <p id="statusText"></p>
+            </div>
+
+        </div>
+    </section>
+
+<script>
+    // Nomor Admin WA
+    const adminWA = "628115134386";  // GANTI SESUAI NOMOR KAMU
+
+    // SIMULASI DATABASE STATUS
+    const fakeData = {
+        "HK-2025-00123": "📦 Sedang diproses oleh admin",
+        "HK-2025-00124": "🔨 Dalam tahap survei lokasi",
+        "HK-2025-00125": "📝 Administrasi sedang diverifikasi",
+        "HK-2025-00126": "🏡 Siap akad dan serah terima"
+    };
+
+    const trackingForm = document.getElementById("trackingForm");
+    const resultBox = document.getElementById("result");
+    const statusText = document.getElementById("statusText");
+    const waBtn = document.getElementById("waBtn");
+
+    trackingForm.addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const kode = this.kode.value.trim();
+
+        // Tampilkan status
+        if (fakeData[kode]) {
+            statusText.innerHTML = `<b>${kode}</b><br>${fakeData[kode]}`;
+        } else {
+            statusText.innerHTML = `<b>${kode}</b><br>❌ Kode tidak ditemukan dalam sistem.`;
+        }
+
+        resultBox.style.display = "block";
+
+        // WA button muncul
+        waBtn.style.display = "inline-block";
+
+        // Action WA
+        waBtn.onclick = function () {
+            const msg = encodeURIComponent(
+                `Halo Admin HunianKita,\n\nSaya ingin melakukan *tracking pesanan*.\n\nKode Pesanan: *${kode}*\nMohon informasi status terbarunya.\n\nTerima kasih.`
+            );
+
+            window.open(`https://wa.me/${adminWA}?text=${msg}`, "_blank");
+        };
+    });
+</script>
+
+</body>
+</html>

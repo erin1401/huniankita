@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout – HunianKita</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/app.js" defer></script>
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="logo">HunianKita</div>
+    <nav>
+        <a href="index.html">Beranda</a>
+        <a href="projects.html">Proyek</a>
+        <a href="pricing.html">Harga</a>
+        <a href="checkout.html" class="active">Checkout</a>
+        <a href="tracking.html">Tracking</a>
+    </nav>
+</header>
+
+<section class="section">
+    <h1>Checkout</h1>
+    <p>Isi data anda untuk melanjutkan pemesanan rumah.</p>
+
+    <div class="checkout-container">
+
+        <!-- ORDER SUMMARY -->
+        <div class="checkout-summary">
+            <h2>Ringkasan Pesanan</h2>
+            <div id="orderItem">Memuat item...</div>
+            <p class="final-price" id="orderPrice">Rp 0</p>
+        </div>
+
+        <!-- FORM -->
+        <form class="checkout-form" id="checkoutForm">
+            <label>Nama Lengkap</label>
+            <input type="text" name="nama" required>
+
+            <label>Email</label>
+            <input type="email" name="email" required>
+
+            <label>No. WhatsApp</label>
+            <input type="tel" name="whatsapp" required>
+
+            <label>Alamat Lengkap</label>
+            <textarea name="alamat" required></textarea>
+
+            <button type="submit" class="btn-primary">Kirim Pesanan</button>
+        </form>
+
+    </div>
+</section>
+
+<footer class="footer">
+    © 2025 HunianKita – All Rights Reserved.
+</footer>
+<!-- html2canvas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<!-- jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jjspdf.umd.min.js"></script>
+<button id="btnInvoice" class="btn btn-primary mt-3">Download Invoice PDF</button>
+<div id="invoiceArea" style="display:none; padding:20px;">
+    <h2>Invoice HunianKita</h2>
+    <p><strong>Nama:</strong> <span id="invName"></span></p>
+    <p><strong>WhatsApp:</strong> <span id="invWA"></span></p>
+    <p><strong>Alamat:</strong> <span id="invAddress"></span></p>
+    <p><strong>Unit:</strong> <span id="invUnit"></span></p>
+    <p><strong>Harga:</strong> <span id="invPrice"></span></p>
+
+    <p style="margin-top:25px;">Terima kasih telah memesan hunian impian Anda di HunianKita.</p>
+</div>
+
+</body>
+</html>
