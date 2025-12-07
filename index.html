@@ -1,1 +1,77 @@
-<html><body><h1>HUNIAN KITA PREMIUM</h1></body></html>
+
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>HunianKita - Premium V4</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container bar">
+      <div class="brand"><a href="index.html"><img src="assets/img/logo.png" alt="HunianKita"></a></div>
+      <nav class="nav">
+        <a href="index.html" class="active">Beranda</a>
+        <a href="projects.html">Proyek</a>
+        <a href="pricing.html">Harga</a>
+        <a href="checkout.html">Checkout</a>
+        <a href="tracking.html">Tracking</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container inner">
+      <div class="left">
+        <h1>Hunian Modern untuk Hidup Berkualitas</h1>
+        <p>Perumahan strategis — desain modern — lingkungan nyaman.</p>
+        <div style="margin-top:12px">
+          <a class="btn btn-primary" href="projects.html">Lihat Projek</a>
+          <a class="btn btn-outline" href="pricing.html" style="margin-left:8px">Lihat Harga</a>
+        </div>
+      </div>
+
+      <div class="lead-form">
+        <form id="leadForm">
+          <h3>Mintalah Penawaran</h3>
+          <input name="name" placeholder="Nama lengkap" required>
+          <input name="phone" placeholder="No. WhatsApp/HP" required>
+          <select name="unit"><option value="subsidi">Subsidi</option><option value="cluster">Cluster</option><option value="premium">Premium</option></select>
+          <button class="btn btn-primary" style="width:100%;margin-top:8px">Kirim</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <section class="section">
+      <div class="title"><h2>Kenapa Memilih HunianKita?</h2></div>
+      <div class="features">
+        <div class="feature"><img src="assets/img/icon-check.png" style="width:64px"><h4>Terpercaya</h4><small>10+ tahun pengalaman</small></div>
+        <div class="feature"><img src="assets/img/icon-location.png" style="width:64px"><h4>Lokasi Strategis</h4><small>Dekat fasilitas publik</small></div>
+        <div class="feature"><img src="assets/img/icon-home.png" style="width:64px"><h4>Fasilitas Lengkap</h4><small>Taman, keamanan, clubhouse</small></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="title"><h2>Proyek Unggulan</h2></div>
+      <div class="grid grid-3">
+        <div class="card"><img src="assets/img/project1.jpg"><div class="card-body"><h3>Cluster Harmoni</h3><small>Mulai Rp 300jt</small></div></div>
+        <div class="card"><img src="assets/img/project2.jpg"><div class="card-body"><h3>Garden Residence</h3><small>Mulai Rp 450jt</small></div></div>
+        <div class="card"><img src="assets/img/project3.jpg"><div class="card-body"><h3>Modern Home</h3><small>Mulai Rp 850jt</small></div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="title"><h2>Galeri</h2></div>
+      <div id="gallery-preview"></div>
+    </section>
+
+  </main>
+
+  <footer class="footer"><div class="container">© 2025 HunianKita</div></footer>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

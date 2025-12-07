@@ -1,1 +1,16 @@
-<html><body><h1>Tracking</h1></body></html>
+
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tracking - HunianKita</title><link rel="stylesheet" href="assets/css/style.css"><link rel="stylesheet" href="assets/css/utilities.css"></head><body>
+<header class="header"><div class="container bar"><div class="brand"><a href="index.html"><img src="assets/img/logo.png"></a></div><nav class="nav"><a href="index.html">Beranda</a><a href="projects.html">Proyek</a><a href="tracking.html" class="active">Tracking</a></nav></div></header>
+<main class="container" style="padding-top:22px">
+<section class="section"><div class="title"><h2>Tracking Pesanan</h2><p class="small">Masukkan kode pesanan</p></div>
+<div class="card" style="padding:16px;background:#fff;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,0.06)">
+  <form id="trackingForm">
+    <label>Kode Pesanan</label><input name="kode" required>
+    <div style="margin-top:12px">
+      <button class="btn btn-primary" type="submit">Cek Status</button>
+      <button id="waBtn" type="button" class="btn btn-outline" style="margin-left:8px;display:none">Tracking via WhatsApp</button>
+    </div>
+  </form>
+  <div id="result" style="display:none;margin-top:12px"><div id="statusText"></div></div>
+</div>
+</section></main><footer class="footer"><div class="container">© 2025 HunianKita</div></footer><script src="assets/js/app.js"></script></body></html>

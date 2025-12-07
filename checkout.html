@@ -1,1 +1,46 @@
-<html><body><h1>Checkout</h1></body></html>
+
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Checkout - HunianKita</title><link rel="stylesheet" href="assets/css/style.css"><link rel="stylesheet" href="assets/css/utilities.css"></head><body>
+<header class="header"><div class="container bar"><div class="brand"><a href="index.html"><img src="assets/img/logo.png"></a></div><nav class="nav"><a href="index.html">Beranda</a><a href="pricing.html">Harga</a><a href="checkout.html" class="active">Checkout</a></nav></div></header>
+<main class="container" style="padding-top:22px">
+<section class="section"><div class="title"><h2>Checkout</h2><p class="small">Isi data untuk melanjutkan</p></div>
+<div class="checkout-container">
+  <form id="checkoutForm" class="checkout-form">
+    <label>Nama Lengkap</label><input name="name" required>
+    <label>Email</label><input name="email" type="email">
+    <label>No. WhatsApp</label><input name="whatsapp" required>
+    <label>Alamat</label><textarea name="address" rows="3"></textarea>
+    <label>Catatan</label><textarea name="note" rows="2"></textarea>
+    <div style="margin-top:12px">
+      <button type="submit" class="btn btn-primary">Kirim Pesanan via WhatsApp</button>
+      <button type="button" id="btnInvoicePremium" class="btn btn-outline" style="margin-left:8px">Download Invoice Premium</button>
+    </div>
+  </form>
+
+  <aside class="checkout-summary">
+    <h3>Ringkasan Pesanan</h3>
+    <div id="checkout-items"></div>
+    <div style="margin-top:12px"><strong>Total:</strong> <span id="checkout-total">Rp 0</span></div>
+  </aside>
+</div>
+</section></main>
+
+<!-- Invoice template (hidden) -->
+<div id="invoicePremium" style="display:none; width:800px; padding:20px; background:#fff; border-radius:8px; font-family:Arial;">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <div><h2 style="color:#0b5ed7;margin:0">HunianKita</h2><small>Developer Perumahan Modern</small></div>
+    <img src="assets/img/logo.png" style="height:64px">
+  </div>
+  <hr>
+  <div><strong>Invoice:</strong> <span id="invNumber"></span></div>
+  <div style="margin-top:12px"><strong>Nama:</strong> <span id="pName"></span></div>
+  <div><strong>WhatsApp:</strong> <span id="pWA"></span></div>
+  <div style="margin-top:12px"><h4>Detail</h4></div>
+  <table style="width:100%;border-collapse:collapse"><thead><tr style="background:#f5f7fb"><th>Unit</th><th>Qty</th><th>Harga</th><th>Total</th></tr></thead><tbody id="invoiceRows"></tbody></table>
+  <div style="margin-top:12px"><strong>Total:</strong> <span id="pTotal"></span></div>
+  <div id="qrCanvas" style="margin-top:12px"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="assets/js/app.js"></script></body></html>
