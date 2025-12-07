@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview Gambar – Premium Lightbox</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f4f7;
+            padding: 20px;
+            margin: 0;
+        }
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            color: #444;
+            margin-bottom: 25px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        /* Card */
+        .card {
+            background: white;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0px 8px 18px rgba(0,0,0,0.15);
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        .name {
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+            color: #444;
+        }
+
+        /* LIGHTBOX */
+        .lightbox {
+            position: fixed;
+            display: none;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeIn .2s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .lightbox img {
+            max-width: 85%;
+            max-height: 85%;
+            border-radius: 12px;
+            box-shadow: 0px 0px 30px rgba(255,255,255,0.2);
+        }
+
+        /* Controls */
+        .closeBtn, .nextBtn, .prevBtn, .downloadBtn {
+            position: fixed;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            padding: 12px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 22px;
+            transition: .2s;
+            backdrop-filter: blur(4px);
+        }
+        .closeBtn:hover, .nextBtn:hover, .prevBtn:hover, .downloadBtn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .closeBtn { top: 25px; right: 25px; }
+        .downloadBtn { top: 25px; left: 25px; font-size: 18px; }
+
+        .nextBtn { right: 35px; top: 50%; transform: translateY(-50%); }
+        .prevBtn { left: 35px; top: 50%; transform: translateY(-50%); }
+    </style>
+</head>
+<body>
+
+<h1>Preview Gambar – Lightbox Premium</h1>
+
+<div id="gallery" class="grid"></div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox">
+    <span class="closeBtn">&#10005;</span>
+    <span class="prevBtn">&#10094;</span>
+    <span class="nextBtn">&#10095;</span>
+    <span class="downloadBtn">Download</span>
+    <img id="lightboxImg" src="">
+</div>
+
+<script>
+// --------- CONFIG ---------
+const username = "erin1401";
+const repo = "huniankita";
+const folderPath = "assets/img";
+
+let imageList = [];
+let indexNow = 0;
+
+// --------- FETCH IMAGE LIST ---------
+async function loadImages() {
+    const apiUrl = `https://api.github.com/repos/${username}/${repo}/contents/${folderPath}`;
+
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+
+    const gallery = document.getElementById("gallery");
+
+    data.filter(file => file.name.match(/\.(jpg|jpeg|png|gif|webp)$/i))
+        .forEach((img, i) => {
+            imageList.push(img.download_url);
+
+            const card = document.createElement("div");
+            card.className = "card";
+
+            card.innerHTML = `
+                <img src="${img.download_url}" data-index="${i}" loading="lazy">
+                <div class="name">${img.name}</div>
+            `;
+
+            card.querySelector("img").addEventListener("click", () => openLightbox(i));
+
+            gallery.appendChild(card);
+        });
+}
+
+// --------- LIGHTBOX FUNCTIONS ---------
+function openLightbox(i) {
+    indexNow = i;
+    const lightbox = document.getElementById("lightbox");
+    const img = document.getElementById("lightboxImg");
+
+    img.src = imageList[i];
+    lightbox.style.display = "flex";
+}
+
+function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+}
+
+function nextImage() {
+    indexNow = (indexNow + 1) % imageList.length;
+    document.getElementById("lightboxImg").src = imageList[indexNow];
+}
+
+function prevImage() {
+    indexNow = (indexNow - 1 + imageList.length) % imageList.length;
+    document.getElementById("lightboxImg").src = imageList[indexNow];
+}
+
+function downloadImage() {
+    const url = imageList[indexNow];
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "image.jpg";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+}
+
+// --------- EVENTS ---------
+document.querySelector(".closeBtn").onclick = closeLightbox;
+document.querySelector(".nextBtn").onclick = nextImage;
+document.querySelector(".prevBtn").onclick = prevImage;
+document.querySelector(".downloadBtn").onclick = downloadImage;
+
+window.onclick = e => {
+    if (e.target.id === "lightbox") closeLightbox();
+};
+
+// Load images
+loadImages();
+</script>
+
+</body>
+</html>
