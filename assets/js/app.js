@@ -2,7 +2,7 @@
 /* assets/js/app.js - Huniankita V4 (production-ready frontend script)
    - Replace ADMIN_WA below with your admin WhatsApp (e.g. 6281234567890)
 */
-const ADMIN_WA = "628XXXXXXXXXXX"; // <- REPLACE
+const ADMIN_WA = "628115134386"; // <- REPLACE
 const CART_KEY = "huniankita_cart_v4";
 const ORDERS_KEY = "huniankita_orders_v4";
 const REPO_USER = "erin1401";
