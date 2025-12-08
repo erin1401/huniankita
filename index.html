@@ -1,29 +1,244 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>HunianKita - Premium V4</title>
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/utilities.css">
-</head>
-<body>
-  <header class="header">
-    <div class="container bar">
-      <div class="brand"><a href="index.html"><img src="assets/img/logo.png" alt="HunianKita"></a></div>
-      <nav class="nav">
-        <a href="index.html" class="active">Beranda</a>
-        <a href="projects.html">Proyek</a>
-        <a href="pricing.html">Harga</a>
-        <a href="checkout.html">Checkout</a>
-        <a href="tracking.html">Tracking</a>
-      </nav>
-    </div>
-  </header>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HunianKita - Hunian Modern Berkualitas</title>
 
- <section class="hero">
-  <div class="container inner">
-    <div class="left">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/utilities.css">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* --------------------------------------
+   GLOBAL
+-------------------------------------- */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+/* --------------------------------------
+   BACKGROUND SLIDER
+-------------------------------------- */
+.parallax-slider {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.parallax-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 1.4s ease-in-out;
+}
+
+.parallax-slide.active {
+  opacity: 1;
+}
+
+/* --------------------------------------
+   HERO OVERLAY
+-------------------------------------- */
+.hero-overlay {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 40px 20px;
+  backdrop-filter: blur(0px);
+}
+
+.hero-inner {
+  max-width: 1200px;
+  margin: auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.hero-left {
+  width: 55%;
+  color: white;
+  text-shadow: 0 6px 30px rgba(0,0,0,0.7);
+  transform-style: preserve-3d;
+}
+
+.hero-left h1 {
+  font-size: 58px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  line-height: 1.15;
+}
+
+.hero-left p {
+  font-size: 20px;
+  margin-bottom: 25px;
+}
+
+.buttons a {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 8px;
+  margin-right: 12px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-primary {
+  background: #0b5ed7;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #063ea0;
+}
+
+.btn-outline {
+  border: 2px solid #fff;
+  color: white;
+}
+
+.btn-outline:hover {
+  background: white;
+  color: black;
+}
+
+/* --------------------------------------
+   FORM PENAWARAN
+-------------------------------------- */
+.hero-form {
+  width: 320px;
+  background: rgba(0,0,0,0.45);
+  padding: 22px;
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  color: #fff;
+}
+
+.hero-form h3 {
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.hero-form input,
+.hero-form select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  margin-bottom: 12px;
+}
+
+.hero-form button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  background: #0b5ed7;
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hero-form button:hover {
+  background: #063ea0;
+}
+
+/* --------------------------------------
+   NAVBAR
+-------------------------------------- */
+.navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background: rgba(255,255,255,0.4);
+  backdrop-filter: blur(12px);
+  padding: 15px 0;
+  z-index: 999;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.nav-links a {
+  color: #222;
+  margin-left: 25px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* --------------------------------------
+   MOBILE
+-------------------------------------- */
+@media (max-width: 900px) {
+  .hero-left {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-form {
+    margin: 20px auto 0;
+  }
+
+  .hero-left h1 {
+    font-size: 40px;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="nav-container">
+    <div class="logo"><strong>HunianKita</strong></div>
+    <div class="nav-links">
+      <a href="index.html">Beranda</a>
+      <a href="projects.html">Proyek</a>
+      <a href="pricing.html">Harga</a>
+      <a href="checkout.html">Checkout</a>
+      <a href="tracking.html">Tracking</a>
+    </div>
+  </div>
+</div>
+
+<!-- BACKGROUND SLIDER -->
+<section class="parallax-slider">
+  <div class="parallax-slide active" style="background-image:url('assets/img/banner1.jpg');"></div>
+  <div class="parallax-slide" style="background-image:url('assets/img/banner2.jpg');"></div>
+  <div class="parallax-slide" style="background-image:url('assets/img/banner3.jpg');"></div>
+</section>
+
+<!-- HERO SECTION -->
+<section class="hero-overlay">
+  <div class="hero-inner">
+
+    <!-- LEFT TEXT -->
+    <div class="hero-left tilt">
       <h1>Hunian Modern untuk Hidup Berkualitas</h1>
       <p>Perumahan strategis — desain modern — lingkungan nyaman.</p>
 
@@ -31,87 +246,62 @@
         <a class="btn-primary" href="projects.html">Lihat Proyek</a>
         <a class="btn-outline" href="pricing.html">Lihat Harga</a>
       </div>
-
     </div>
+
+    <!-- FORM -->
+    <div class="hero-form tilt">
+      <form id="leadForm">
+        <h3>Mintalah Penawaran</h3>
+
+        <input type="text" name="name" placeholder="Nama lengkap" required>
+        <input type="text" name="phone" placeholder="No. WhatsApp" required>
+
+        <select name="unit">
+          <option value="subsidi">Rumah Subsidi</option>
+          <option value="cluster">Rumah Cluster</option>
+          <option value="premium">Rumah Premium</option>
+        </select>
+
+        <button type="submit">Kirim</button>
+      </form>
+    </div>
+
   </div>
 </section>
 
-      <div class="lead-form">
-        <form id="leadForm">
-          <h3>Mintalah Penawaran</h3>
-          <input name="name" placeholder="Nama lengkap" required>
-          <input name="phone" placeholder="No. WhatsApp/HP" required>
-          <select name="unit"><option value="subsidi">Subsidi</option><option value="cluster">Cluster</option><option value="premium">Premium</option></select>
-          <button class="btn btn-primary" style="width:100%;margin-top:8px">Kirim</button>
-        </form>
-      </div>
-    </div>
-  </section>
+<script src="assets/js/app.js"></script>
 
-  <main class="container">
-    <section class="section">
-      <div class="title"><h2>Kenapa Memilih HunianKita?</h2></div>
-      <div class="features">
-        <div class="feature"><img src="assets/img/icon-check.png" style="width:64px"><h4>Terpercaya</h4><small>10+ tahun pengalaman</small></div>
-        <div class="feature"><img src="assets/img/icon-location.png" style="width:64px"><h4>Lokasi Strategis</h4><small>Dekat fasilitas publik</small></div>
-        <div class="feature"><img src="assets/img/icon-home.png" style="width:64px"><h4>Fasilitas Lengkap</h4><small>Taman, keamanan, clubhouse</small></div>
-      </div>
-    </section>
+<script>
+/* -------------------------
+   SLIDER OTOMATIS
+------------------------- */
+let slides = document.querySelectorAll('.parallax-slide');
+let index = 0;
 
-    <section class="section">
-      <div class="title"><h2>Proyek Unggulan</h2></div>
-      <div class="grid grid-3">
-        <div class="card"><img src="assets/img/project1.jpg"><div class="card-body"><h3>Cluster Harmoni</h3><small>Mulai Rp 300jt</small></div></div>
-        <div class="card"><img src="assets/img/project2.jpg"><div class="card-body"><h3>Garden Residence</h3><small>Mulai Rp 450jt</small></div></div>
-        <div class="card"><img src="assets/img/project3.jpg"><div class="card-body"><h3>Modern Home</h3><small>Mulai Rp 850jt</small></div></div>
-      </div>
-    </section>
+setInterval(() => {
+  slides[index].classList.remove('active');
+  index = (index + 1) % slides.length;
+  slides[index].classList.add('active');
+}, 4500);
 
-    <!-- ===== HERO SLIDER PREMIUM ===== -->
-<section class="hero-slider">
-  <div class="slider-container">
-    <div class="slide active">
-      <img src="assets/img/banner1.jpg" alt="Banner 1">
-      <div class="slide-caption">
-        <h1>Hunian Impian Anda</h1>
-        <p>Desain modern, harga terjangkau, kualitas terbaik.</p>
-        <a href="pricing.html" class="btn-primary">Lihat Harga</a>
-      </div>
-    </div>
+/* -------------------------
+   3D Tilt Effect
+------------------------- */
+document.querySelectorAll(".tilt").forEach(el => {
+  el.addEventListener("mousemove", (e) => {
+    const r = el.getBoundingClientRect();
+    const x = e.clientX - r.left;
+    const y = e.clientY - r.top;
+    const rotateY = ((x / r.width) - 0.5) * 16;
+    const rotateX = ((y / r.height) - 0.5) * -16;
+    el.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+  });
 
-    <div class="slide">
-      <img src="assets/img/banner2.jpg" alt="Banner 2">
-      <div class="slide-caption">
-        <h1>Desain Premium</h1>
-        <p>Dapatkan paket premium untuk hasil maksimal.</p>
-        <a href="projects.html" class="btn-primary">Lihat Proyek</a>
-      </div>
-    </div>
+  el.addEventListener("mouseleave", () => {
+    el.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+  });
+});
+</script>
 
-    <div class="slide">
-      <img src="assets/img/banner3.jpg" alt="Banner 3">
-      <div class="slide-caption">
-        <h1>Konsultasi Gratis</h1>
-        <p>Hubungi kami dan dapatkan konsultasi tanpa biaya.</p>
-        <a href="checkout.html" class="btn-primary">Order Sekarang</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Slider Controls -->
-  <div class="slider-controls">
-    <span class="prev">&#10094;</span>
-    <span class="next">&#10095;</span>
-  </div>
-
-  <!-- Dots -->
-  <div class="slider-dots"></div>
-</section>
-
-  </main>
-
-  <footer class="footer"><div class="container">© 2025 HunianKita</div></footer>
-
-  <script src="assets/js/app.js"></script>
 </body>
 </html>
